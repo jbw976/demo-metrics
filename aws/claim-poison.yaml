@@ -1,0 +1,10 @@
+apiVersion: demo-kcl.crossplane.io/v1alpha1
+kind: Network
+metadata:
+  name: network-kcl-poison
+  namespace: default
+spec:
+  id: network-kcl-poison
+  includeGateway: true
+  count: 5
+  poison: true

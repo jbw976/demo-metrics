@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  labels:
+    app: kube-prometheus-stack-prometheus
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 56.21.1
+    chart: kube-prometheus-stack-56.21.1
+    heritage: Helm
+    release: prometheus
+  name: providers
+  namespace: monitoring
+spec:
+  namespaceSelector:
+    matchNames:
+    - crossplane-system
+  podMetricsEndpoints:
+  - port: metrics
+  selector:
+    matchLabels:
+      pkg.crossplane.io/provider: provider-aws-ec2
